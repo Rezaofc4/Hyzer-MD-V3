@@ -8,7 +8,7 @@ hyzer = {
     },
   message: { 
   "extendedTextMessage": {
-  "text": '*Halo dek. Ketik .menu untuk memulai bot*',
+  "text": '*MEMBER BARU, MAINAN BARU*',
   "title": wm,
   'jpegThumbnail': 'https://telegra.ph/file/20509b31b6e05ff999daa.jpg',
         }
