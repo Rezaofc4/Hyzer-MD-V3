@@ -1,69 +1,23 @@
-let moment = require('moment-timezone')
-let handler = async (m, {conn}) => {
-    let _uptime = process.uptime() * 1000
-    let uptime = clockString(_uptime)
-    let d = new Date
-    let date = d.toLocaleDateString('id', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    })
-let anu = `${ucapan()}
-Halo👋
-Ada Yang Bisa Saya Bantu?
-Ketik .menu Untuk Memulai Bot
-
-Runtime: ${uptime}`
-   const ftroli = {
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+let name = await conn.getName(m.sender)
+  let wm = global.wm
+hyzer = {
     key : {
-    remoteJid: '6283136505591-1614953337@g.us',
-    participant : '0@s.whatsapp.net'
+  remoteJid: 'status@broadcast',
+  participant : '0@s.whatsapp.net'
     },
-    message: {
-    orderMessage: {
-    itemCount : 2022,
-    status: 1,
-    surface : 1,
-    message: `2022 © ${namebot}, 
-    orderTitle: `Hyzer`,
-    thumbnail: 'https://telegra.ph/file/5ecbec3e82e247671a18e.jpg', 
-    sellerJid: '0@s.whatsapp.net' 
-    }
-    }
-    }
-   conn.reply(m.chat, anu, ftroli) 
+  message: { 
+  "extendedTextMessage": {
+  "text": '*Halo sayang. Ketik #menu untuk memulai bot*',
+  "title": wm,
+  'jpegThumbnail': 'https://telegra.ph/file/a9ddab980d950b02b4a8a.png',
+        }
+       } 
+     }
+conn.sendImageAsSticker(m.chat, 'https://telegra.ph/file/6f1c71d4f801482c930b8.png', hyzer, { packname: "sticker by", author: "hyzer" })
 }
-handler.customPrefix = /^bot$/i // ketik bot (tanpa prefix)
-handler.command = new RegExp
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
-handler.fail = null
-module.exports = handler
 
-function ucapan() {
-  const time = moment.tz('Asia/Jakarta').format('HH')
-  if (time >= 5) {
-    res = "Selamat pagi🌄"
-  }
-  if (time > 9) {
-    res = "Selamat siang🏞️"
-  }
-  if (time >= 15) {
-    res = "Selamat sore🌇"
-  }
-  if (time >= 19) {
-    res = "Selamat malam🌃"
-  }
-  return res
-}
-function clockString(ms) {
-    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
-    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
-    let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-    return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
-}
+handler.customPrefix = /^(Halo?|hai?|hi?|hamlo?|hay)$/i
+handler.command = new RegExp
+
+module.exports = handler
